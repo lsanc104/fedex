@@ -25,7 +25,7 @@ module Fedex
       end
 
       def process_request
-        api_response = self.class.post(api_url, :body => build_xml)
+        api_response = self.class.post("#{api_url}track", :body => build_xml)
         puts api_response if @debug == true
         response = parse_response(api_response)
 
@@ -73,7 +73,7 @@ module Fedex
       end
 
       def service
-        { :id => 'trck', :version => 6 }
+        { :id => 'trck', :version => 16 }
       end
 
       def add_package_identifier(xml)
